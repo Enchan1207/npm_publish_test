@@ -1,14 +1,22 @@
 {
   "name": "@enchan1207/sample",
-  "version": "0.1.1",
-  "description": "my sample package",
-  "main": "src/index.js",
-  "bin": {
-    "sample": "src/index.js"
-  },
   "type": "module",
+  "description": "my sample package",
   "author": "Enchan1207",
   "license": "MIT",
+  "version": "0.1.2",
+  "bin": {
+    "sample": "dist/index.js"
+  },
+  "scripts": {
+    "build": "esbuild src/index.ts --bundle --platform=node --outfile=dist/index.js",
+    "prepublishOnly": "build"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.1",
+    "esbuild": "^0.27.0",
+    "typescript": "^5.9.3"
+  },
   "packageManager": "pnpm@10.11.0",
   "publishConfig": {
     "access": "public"
