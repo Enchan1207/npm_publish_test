@@ -10,7 +10,7 @@
   },
   "scripts": {
     "build": "esbuild src/index.ts --bundle --platform=node --outfile=dist/index.js",
-    "prepublishOnly": "build"
+    "prepublishOnly": "pnpm build"
   },
   "devDependencies": {
     "@types/node": "^24.10.1",
