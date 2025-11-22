@@ -4,10 +4,14 @@
   "description": "my sample package",
   "author": "Enchan1207",
   "license": "MIT",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "bin": {
     "sample": "dist/index.js"
   },
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "scripts": {
     "build": "esbuild src/index.ts --bundle --platform=node --outfile=dist/index.js",
     "prepublishOnly": "pnpm build"
