@@ -1,0 +1,16 @@
+{
+  "name": "@enchan1207/sample",
+  "version": "0.1.1",
+  "description": "my sample package",
+  "main": "src/index.js",
+  "bin": {
+    "sample": "src/index.js"
+  },
+  "type": "module",
+  "author": "Enchan1207",
+  "license": "MIT",
+  "packageManager": "pnpm@10.11.0",
+  "publishConfig": {
+    "access": "public"
+  }
+}
