@@ -3,7 +3,7 @@
   "description": "my sample package",
   "author": "Enchan1207",
   "license": "MIT",
-  "version": "0.1.12",
+  "version": "0.1.13",
   "bin": {
     "sample": "dist/index.js"
   },
@@ -12,9 +12,8 @@
     "README.md"
   ],
   "scripts": {
-    "premain": "pnpm build",
-    "main": "node ./dist/index.js",
-    "build": "esbuild src/cli.ts --bundle --platform=node --outfile=dist/index.js",
+    "dev": "pnpm build && node ./dist/index.js",
+    "build": "esbuild src/cli.ts --bundle --platform=node --banner:js=\"#!/usr/bin/env node\" --outfile=dist/index.js",
     "prepublishOnly": "pnpm build"
   },
   "dependencies": {
