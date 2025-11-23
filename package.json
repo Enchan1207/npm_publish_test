@@ -1,10 +1,9 @@
 {
   "name": "@enchan1207/sample",
-  "type": "module",
   "description": "my sample package",
   "author": "Enchan1207",
   "license": "MIT",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "bin": {
     "sample": "dist/cli.js"
   },
@@ -13,7 +12,8 @@
     "README.md"
   ],
   "scripts": {
-    "main": "tsx src/cli.ts",
+    "premain": "pnpm build",
+    "main": "node ./dist/index.js",
     "build": "esbuild src/cli.ts --bundle --platform=node --outfile=dist/index.js",
     "prepublishOnly": "pnpm build"
   },
