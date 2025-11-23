@@ -5,15 +5,18 @@ on:
     branches: main
 
 jobs:
-  publish:
+  compare_version:
     runs-on: ubuntu-latest
+
+    outputs:
+      changed: ${{ steps.compare_version.outputs.changed }}
 
     steps:
       - uses: actions/checkout@v5
         with:
           fetch-depth: 2
 
-      - name: Compare version
+      - name: Check version between HEAD and ^HEAD
         id: compare_version
         run: |
           prevVersion=$(git show HEAD~1:package.json | jq -r .version)
@@ -26,21 +29,28 @@ jobs:
             echo "changed=true" >> $GITHUB_OUTPUT
           fi
 
+  publish:
+    needs: compare_version
+    if: needs.compare_version.outputs.changed == 'true'
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 2
+
       - uses: pnpm/action-setup@v4
-        if: steps.compare_version.outputs.changed == 'true'
         with:
           version: 10
 
       - uses: actions/setup-node@v4
-        if: steps.compare_version.outputs.changed == 'true'
         with:
           node-version: 22
           cache: 'pnpm'
 
       - name: Install
-        if: steps.compare_version.outputs.changed == 'true'
         run: pnpm i --frozen-lockfile
 
       - name: Publish
-        if: steps.compare_version.outputs.changed == 'true'
         run: pnpm publish
