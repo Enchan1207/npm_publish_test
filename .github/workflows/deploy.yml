@@ -26,12 +26,16 @@ jobs:
             echo "changed=true" >> $GITHUB_OUTPUT
           fi
 
+      - uses: pnpm/action-setup@v4
+        if: steps.compare_version.outputs.changed == 'true'
+        with:
+          version: 10
+
       - uses: actions/setup-node@v4
         if: steps.compare_version.outputs.changed == 'true'
         with:
           node-version: 22
-
-      - uses: pnpm/action-setup@v2.2.2
+          cache: 'pnpm'
 
       - name: Install
         if: steps.compare_version.outputs.changed == 'true'
