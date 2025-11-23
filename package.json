@@ -4,7 +4,7 @@
   "description": "my sample package",
   "author": "Enchan1207",
   "license": "MIT",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "bin": {
     "sample": "dist/cli.js"
   },
@@ -14,7 +14,7 @@
   ],
   "scripts": {
     "main": "tsx src/cli.ts",
-    "build": "tsc",
+    "build": "esbuild src/cli.ts --bundle --platform=node --outfile=dist/index.js",
     "prepublishOnly": "pnpm build"
   },
   "dependencies": {
