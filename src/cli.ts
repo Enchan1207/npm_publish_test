@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { main } from './index'
+import { main } from 'src'
 
 main()
   .then(process.exit)
