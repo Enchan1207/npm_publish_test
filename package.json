@@ -4,9 +4,9 @@
   "description": "my sample package",
   "author": "Enchan1207",
   "license": "MIT",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "bin": {
-    "sample": "dist/index.js"
+    "sample": "dist/cli.js"
   },
   "files": [
     "dist",
@@ -15,8 +15,7 @@
   "scripts": {
     "main": "tsx src/cli.ts",
     "build": "tsc",
-    "prepublishOnly": "pnpm build",
-    "prepack": "pnpm build"
+    "prepublishOnly": "pnpm build"
   },
   "dependencies": {
     "@clack/prompts": "^0.11.0"
