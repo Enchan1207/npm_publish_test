@@ -1,7 +1,9 @@
-import { intro, outro, text } from '@clack/prompts'
+import { intro, outro, text, log } from '@clack/prompts'
 
 export const main = async (): Promise<number> => {
   intro('Welcome!')
+
+  log.info(__dirname)
 
   const name = await text({
     message: 'Tell me your name.',

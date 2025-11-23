@@ -3,7 +3,7 @@
   "description": "my sample package",
   "author": "Enchan1207",
   "license": "MIT",
-  "version": "0.1.21",
+  "version": "0.1.22",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Enchan1207/npm_publish_test.git"
