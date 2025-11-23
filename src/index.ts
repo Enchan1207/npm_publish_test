@@ -1,5 +1,6 @@
-#!/usr/bin/env node
+import { intro } from '@clack/prompts'
 
-const message: string = "I'm here. now I'm written in TypeScript!"
-console.log(message)
-console.log(`Exec path: ${process.env.npm_config_user_agent}`)
+export const main = async (): Promise<number> => {
+  intro('Welcome!')
+  return 0
+}
