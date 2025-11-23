@@ -3,8 +3,12 @@
   "description": "my sample package",
   "author": "Enchan1207",
   "license": "MIT",
-  "version": "0.1.15",
+  "version": "0.1.16",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Enchan1207/npm_publish_test.git"
+  },
   "bin": {
     "sample": "dist/index.js"
   },
