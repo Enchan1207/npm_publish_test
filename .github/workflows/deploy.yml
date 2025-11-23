@@ -1,0 +1,42 @@
+name: Deploy package
+
+on:
+  push:
+    branches: main
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 2
+
+      - name: Compare version
+        id: compare_version
+        run: |
+          prevVersion=$(git show HEAD~1:package.json | jq -r .version)
+          currentVersion=$(jq -r .version package.json)
+          if [ "$prevVersion" = "$currentVersion" ]; then
+            echo "No version changes detected."
+            echo "changed=false" >> $GITHUB_OUTPUT
+          else
+            echo "Version: $prevVersion -> $currentVersion"
+            echo "changed=true" >> $GITHUB_OUTPUT
+          fi
+
+      - uses: actions/setup-node@v4
+        if: steps.compare_version.outputs.changed == 'true'
+        with:
+          node-version: 22
+
+      - uses: pnpm/action-setup@v2.2.2
+
+      - name: Install
+        if: steps.compare_version.outputs.changed == 'true'
+        run: pnpm i --frozen-lockfile
+
+      - name: Publish
+        if: steps.compare_version.outputs.changed == 'true'
+        run: pnpm publish
