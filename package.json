@@ -3,7 +3,8 @@
   "description": "my sample package",
   "author": "Enchan1207",
   "license": "MIT",
-  "version": "0.1.13",
+  "version": "0.1.14",
+  "type": "module",
   "bin": {
     "sample": "dist/index.js"
   },
@@ -13,7 +14,7 @@
   ],
   "scripts": {
     "dev": "pnpm build && node ./dist/index.js",
-    "build": "esbuild src/cli.ts --bundle --platform=node --banner:js=\"#!/usr/bin/env node\" --outfile=dist/index.js",
+    "build": "node ./build.mjs",
     "prepublishOnly": "pnpm build"
   },
   "dependencies": {
@@ -22,7 +23,6 @@
   "devDependencies": {
     "@types/node": "^24.10.1",
     "esbuild": "^0.27.0",
-    "tsx": "^4.20.6",
     "typescript": "^5.9.3"
   },
   "packageManager": "pnpm@10.11.0",
