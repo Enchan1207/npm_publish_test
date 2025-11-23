@@ -22,10 +22,10 @@ jobs:
           prevVersion=$(git show HEAD~1:package.json | jq -r .version)
           currentVersion=$(jq -r .version package.json)
           if [ "$prevVersion" = "$currentVersion" ]; then
-            echo "No version changes detected."
+            echo "::notice::No version changes detected. publication will be skipped."
             echo "changed=false" >> $GITHUB_OUTPUT
           else
-            echo "Version: $prevVersion -> $currentVersion"
+            echo "::notice::Version changed: $prevVersion -> $currentVersion"
             echo "changed=true" >> $GITHUB_OUTPUT
           fi
 
