@@ -3,7 +3,7 @@
   "description": "my sample package",
   "author": "Enchan1207",
   "license": "MIT",
-  "version": "0.1.16",
+  "version": "0.1.15",
   "type": "module",
   "bin": {
     "sample": "dist/index.js"
